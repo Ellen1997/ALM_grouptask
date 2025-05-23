@@ -1,8 +1,8 @@
 
-node_modules
-/node_modules
-database.sqlite
-
+node_modules/
+*.sqlite
 .env
-*.env
-.env*
+*.log
+npm-debug.log*
+*.log
+npm-debug.log*

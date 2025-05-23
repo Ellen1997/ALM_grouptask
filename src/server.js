@@ -26,6 +26,10 @@ testConnection();
 // Routes
 app.use("/users", UserRouter);
 
+app.get("/", (req, res) => {
+  res.send("API is running!");
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
