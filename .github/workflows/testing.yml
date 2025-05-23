@@ -1,14 +1,14 @@
 name: Run Tests
 
 on:
-    push: 
-        branches: [main, dev]
-    pull_request:
-        branches: [main, dev]
+  push: 
+      branches: [main, dev]
+  pull_request:
+      branches: [main, dev]
 
 jobs: 
-    test: 
-        runs-on: ubuntu-latest
+  test: 
+    runs-on: ubuntu-latest
 
     steps:
     - name: Check out code
@@ -24,4 +24,4 @@ jobs:
     
     - name: Run Tests
       run: npm test
-      
+    
