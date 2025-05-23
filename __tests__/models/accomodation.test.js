@@ -1,9 +1,14 @@
 const sequelize = require('../../src/config/database');
 const Accomodation = require('../../src/models/Accomodation');
+const User = require('../../src/models/User')
+
+
+
 
 beforeAll(async () => {
   await sequelize.sync({ force: true });
 });
+
 
 describe('Accomodation Model', () => {
   it('ska kunna skapa en accomodation med alla fält', async () => {
@@ -16,9 +21,10 @@ describe('Accomodation Model', () => {
       rum: 2
     });
 
+
     expect(acc.adress).toBe('Nybroplan 60');
     expect(acc.hyra).toBe(8500);
-  });
+  })
 
   it('ska inte tillåta att address saknas', async () => {
     await expect(
@@ -29,10 +35,15 @@ describe('Accomodation Model', () => {
         hyra: 5500,
         rum: 1
       })
-    ).rejects.toThrow();
+    ).rejects.toThrow()
   });
 
   it('ska kunna ha en userId', async () => {
+    const user = await User.create({
+      username: 'testuser',
+      email: 'test@example.com'
+    })
+
     const acc = await Accomodation.create({
       adress: 'Uservägen 9',
       stad: 'Malmö',
@@ -40,9 +51,9 @@ describe('Accomodation Model', () => {
       postnummer: '15358',
       hyra: 12000,
       rum: 4,
-      userId: 1
+      userId: user.id
     });
 
-    expect(acc.userId).toBe(1);
+    expect(acc.userId).toBe(user.id);
   });
-});
+})
