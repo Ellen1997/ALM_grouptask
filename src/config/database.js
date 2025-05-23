@@ -1,6 +1,7 @@
 const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
 
+
 dotenv.config();
 
 let sequelize;
@@ -20,3 +21,7 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 module.exports = sequelize;
+
+
+
+require('../models/Associations');
