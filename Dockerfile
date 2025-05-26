@@ -16,4 +16,3 @@ EXPOSE 3000
 
 # Starta appen
 CMD ["npm", "start"]
-
